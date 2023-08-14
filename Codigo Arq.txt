@@ -1,0 +1,53 @@
+
+package javaapplication14;
+
+import java.util.Scanner;
+
+public class BaseConversion {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Ingrese el numero: ");
+        String numeroStr = scanner.nextLine();
+        
+        System.out.print("Ingrese la base M (entre 1 y 16): ");
+        int baseM = scanner.nextInt();
+        
+        System.out.print("Ingrese la base N (entre 1 y 16): ");
+        int baseN = scanner.nextInt();
+        
+        if (baseM < 1  baseN < 1 || baseN > 16) {
+            System.out.println("Bases invalidas. Deben estar entre 1 y 16.");
+            return;
+        }
+        
+        if (!validarDigitos(numeroStr, baseM)) {
+            System.out.println("Los digitos ingresados no son validos para la base M.");
+            return;
+        }
+        
+        int decimal = Integer.parseInt(numeroStr, baseM);
+        
+        String resultadoBaseN = Integer.toString(decimal, baseN);
+        String binario = Integer.toBinaryString(decimal);
+        char caracterAscii = (char) decimal;
+        
+        System.out.println("Numero en base " + baseN + ": " + resultadoBaseN);
+        System.out.println("Representacion binaria: " + binario);
+        System.out.println("Valor ASCII: " + caracterAscii);
+        System.out.println("Caracter ASCII: " + caracterAscii);
+    }
+    
+    public static boolean validarDigitos(String numeroStr, int base) {
+        String digitosValidos = "0123456789ABCDEF";
+        
+        for (int i = 0; i < numeroStr.length(); i++) {
+            char digito = Character.toUpperCase(numeroStr.charAt(i));
+            if (digitosValidos.indexOf(digito) == -1 || digitosValidos.indexOf(digito) >= base) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+}
