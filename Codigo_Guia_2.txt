@@ -1,0 +1,21 @@
+const int door1Pin = D1; // Pin para la puerta 1
+const int door2Pin = D2; // Pin para la puerta 2
+const int door3Pin = D3; // Pin para la puerta 3
+const int door4Pin = D4; // Pin para la puerta 4
+const int lightPin = D5; // Pin para la luz interior
+
+void setup() {
+  pinMode(door1Pin, INPUT);
+  pinMode(door2Pin, INPUT);
+  pinMode(door3Pin, INPUT);
+  pinMode(door4Pin, INPUT);
+  pinMode(lightPin, OUTPUT);
+}
+
+void loop() {
+  if (digitalRead(door1Pin) == HIGH  digitalRead(door2Pin) == HIGH  digitalRead(door3Pin) == HIGH || digitalRead(door4Pin) == HIGH) {
+    digitalWrite(lightPin, HIGH); // Encender la luz
+  } else {
+    digitalWrite(lightPin, LOW); // Apagar la luz
+  }
+}
