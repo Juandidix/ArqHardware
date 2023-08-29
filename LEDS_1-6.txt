@@ -1,0 +1,112 @@
+PUNTO 1.
+
+https://wokwi.com/projects/374337288974951425
+
+from machine import Pin
+from utime import sleep
+tiempo=0.2
+led1=Pin(13,Pin.OUT)
+while True:
+  led1.value(1)
+  sleep(tiempo)
+  led1.value(0)
+  sleep(tiempo)
+
+PUNTO 2.
+
+https://wokwi.com/projects/374347199334418433
+
+from machine import Pin
+import utime 
+
+led1=Pin(13,Pin.OUT)
+led2=Pin(12,Pin.OUT)
+led3=Pin(14,Pin.OUT)
+led4=Pin(27,Pin.OUT)
+led5=Pin(26,Pin.OUT)
+led6=Pin(25,Pin.OUT)
+led7=Pin(33,Pin.OUT)
+led8=Pin(32,Pin.OUT)
+pausa=0.15
+
+def parpadear():
+ while True:
+  led1.value(1)
+  led2.value(1)
+  led3.value(1)
+  led4.value(1)
+  led5.value(1)
+  led6.value(1)
+  led7.value(1)
+  led8.value(1)
+  utime.sleep(pausa)
+  led1.value(0)
+  led2.value(0)
+  led3.value(0)
+  led4.value(0)
+  led5.value(0)
+  led6.value(0)
+  led7.value(0)
+  led8.value(0)
+  utime.sleep(pausa)
+
+parpadear()
+
+PUNTO 3.
+
+from machine import Pin
+import utime
+led_pins = [13, 12, 14, 27, 26, 25, 33, 32]
+pausa = 0.15
+
+leds = [Pin(pin_num, Pin.OUT) for pin_num in led_pins]
+
+def secuencial1D():
+    while True:
+        for led in leds:
+            led.value(1)
+            utime.sleep(pausa)
+            led.value(0)
+            utime.sleep(pausa)
+
+secuencial1D()
+
+PUNTO 4.
+
+from machine import Pin
+import utime
+
+led_pins = [13, 12, 14, 27, 26, 25, 33, 32]
+pausa = 0.15
+
+leds = [Pin(pin_num, Pin.OUT) for pin_num in led_pins]
+
+def secuencial1D():
+    while True:
+        for led in leds:
+            led.value(not led.value())  # Alternar el estado del LED
+            utime.sleep(pausa)
+
+secuencial1D()
+
+PUNTO 5-6.
+
+from machine import Pin
+import utime
+
+led_pins = [13, 12, 14, 27, 26, 25, 33, 32]
+pausa = 0.15
+
+leds = [Pin(pin_num, Pin.OUT) for pin_num in led_pins]
+
+def secuencial1D():
+    while True:
+        for i in range(len(leds)):
+            for led in leds[:i+1]:
+                led.value(1)
+            utime.sleep(pausa)
+            for led in leds[:i+1]:
+                led.value(0)
+            utime.sleep(pausa)
+
+secuencial1D()
